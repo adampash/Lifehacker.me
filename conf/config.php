@@ -16,11 +16,13 @@ $accounts['flickr']['username'] = 'adampash'; // The username in your URL, if yo
 $accounts['flickr']['apikey'] = '65a70181d70eadfa77ab1e82adc8b1d2'; // Looks like dfc510ae6d2c45d5fdf9259415pe7c92, and you can sign up for one (if you don't have one already) at http://www.flickr.com/services/apps/create/apply
 
 /*** VIDEOS ***/
-$general['about_videos'] = 'These are my awesome Vimeo and YouTube videos!'; // This is a description of
+$general['about_videos'] = 'These are my awesome Vimeo and YouTube videos!'; // This is a description that shows up in your videos section
 $accounts['vimeo']['username'] = ''; // Entering your Vimeo username will display your public Vimeo videos on your page
 $accounts['youtube']['username'] = 'lifehacker'; // Entering your YouTube username will display your public YouTube videos on your page
 
 /*** TWITTER ***/
 $accounts['twitter']['username'] = 'adampash'; // Entering your Twitter username will display your latest tweets on your page
+$accounts['twitter']['rts'] = 'true'; // Change to false to exclude retweets
+$accounts['twitter']['@'] = 'true'; // Change to false to exclude @ replies
 
 ?>

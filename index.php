@@ -1,5 +1,5 @@
 <?php require_once('conf/config.php') ?>
-<?
+<?php
 /*** EVERYBODY FUNCTIONS ***/
 
 // Curl helper function
@@ -46,7 +46,7 @@ if (isset($accounts['youtube']['username']) && $accounts['youtube']['username'] 
 if (isset($accounts['twitter']['username']) && $accounts['twitter']['username'] != '')
 {
 	$twitter_on = true;
-	$twitter_xml_feed = 'http://api.twitter.com/1/statuses/user_timeline.xml?screen_name='.$accounts['twitter']['username'];
+	$twitter_xml_feed = 'http://api.twitter.com/1/statuses/user_timeline.xml?screen_name='.$accounts['twitter']['username'] . '&include_rts=' . $accounts['twitter']['rts'];
 	$twitter_simple_xml = simplexml_load_file($twitter_xml_feed);
 	$twitter_status_feed = $twitter_simple_xml->status;
 }
@@ -59,13 +59,13 @@ if (isset($accounts['twitter']['username']) && $accounts['twitter']['username'] 
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title><? if (isset($general['first_name']) && $general['first_name'] != '') {echo strtolower($general['first_name']);} ?> <? if (isset($general['last_name']) && $general['last_name'] != '') {echo strtolower($general['last_name']);} ?></title>
+	<title><?php if (isset($general['first_name']) && $general['first_name'] != '') {echo strtolower($general['first_name']);} ?> <?php if (isset($general['last_name']) && $general['last_name'] != '') {echo strtolower($general['last_name']);} ?></title>
 	<meta http-equiv="Content-category" content="text/html; charset=ISO-8859-1" />
 	<link href="css/splash.css" rel="stylesheet" category="text/css" />
     <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" /> 
 	<link rel="SHORTCUT ICON" href="/favicon.ico" />
 	<script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
-	<? if (isset($accounts['flickr']['username']) && isset($accounts['flickr']['apikey']) && $accounts['flickr']['apikey'] != '' && $accounts['flickr']['username'] != '')
+	<?php if (isset($accounts['flickr']['username']) && isset($accounts['flickr']['apikey']) && $accounts['flickr']['apikey'] != '' && $accounts['flickr']['username'] != '')
 	{
 	?>
 	
@@ -75,9 +75,9 @@ if (isset($accounts['twitter']['username']) && $accounts['twitter']['username'] 
 	    // Load theme
 	    Galleria.loadTheme('js/themes/lightbox/galleria.lightbox.js');
 	</script>
-	<? } ?>
+	<?php } ?>
 	
-	<? if (isset($accounts['vimeo']['username']) || isset($accounts['youtube']['username']))
+	<?php if (isset($accounts['vimeo']['username']) || isset($accounts['youtube']['username']))
 	{
 	?>
 	<script type="text/javascript" charset="utf-8">
@@ -87,7 +87,7 @@ if (isset($accounts['twitter']['username']) && $accounts['twitter']['username'] 
 	</script>
 	<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
-	<? } ?>
+	<?php } ?>
 	
 	<script type="text/javascript" src="js/switches.js"></script>
 	<script type="text/javascript">
@@ -97,17 +97,17 @@ if (isset($accounts['twitter']['username']) && $accounts['twitter']['username'] 
 		body
 		{
 			
-			<? if(isset($visual_style['background_image']) && $visual_style['background_image'] != '') {echo 'background-image: url('.$visual_style['background_image'].');';} ?>
+			<?php if(isset($visual_style['background_image']) && $visual_style['background_image'] != '') {echo 'background-image: url('.$visual_style['background_image'].');';} ?>
 			
 		}
 		div#nav, div#nav a
 		{
 			
-			<? if(isset($visual_style['navigation_color']) && $visual_style['navigation_color'] != '') {
+			<?php if(isset($visual_style['navigation_color']) && $visual_style['navigation_color'] != '') {
 				echo('color: '.$visual_style['navigation_color'].';');
 				} ?>
 		
-			<? if(isset($visual_style['navigation_shadows']) && $visual_style['navigation_shadows'] != '') {
+			<?php if(isset($visual_style['navigation_shadows']) && $visual_style['navigation_shadows'] != '') {
 				echo 'text-shadow:0px 0px 6px #666';
 				} ?>
 			
@@ -117,14 +117,14 @@ if (isset($accounts['twitter']['username']) && $accounts['twitter']['username'] 
 <body>
 	<div id="nav">
 		<h1>
-		<? if (isset($general['first_name']) && $general['first_name'] != '') {echo strtolower($general['first_name']);} ?> <? if (isset($general['last_name']) && $general['last_name'] != '') {echo strtolower($general['last_name']);} ?>
+		<?php if (isset($general['first_name']) && $general['first_name'] != '') {echo strtolower($general['first_name']);} ?> <?php if (isset($general['last_name']) && $general['last_name'] != '') {echo strtolower($general['last_name']);} ?>
 		</h1>
 		<div id="elements">
 			<ol>
 				<li><a href="javascript:switchto('about');" id="nav_about">about</a></li>
-				<? if ($flickr_on == true) { ?><li><a href="javascript:switchto('photos');" id="nav_photos">photos</a></li><? } ?>
-				<? if ($video_bubble == true) { ?><li><a href="javascript:switchto('videos');" id="nav_videos">videos</a></li><? } ?>
-				<? if ($twitter_on == true) { ?><li><a href="javascript:switchto('twitter');" id="nav_twitter">twitter</a></li><? } ?>
+				<?php if ($flickr_on == true) { ?><li><a href="javascript:switchto('photos');" id="nav_photos">photos</a></li><?php } ?>
+				<?php if ($video_bubble == true) { ?><li><a href="javascript:switchto('videos');" id="nav_videos">videos</a></li><?php } ?>
+				<?php if ($twitter_on == true) { ?><li><a href="javascript:switchto('twitter');" id="nav_twitter">twitter</a></li><?php } ?>
 			</ol>
 		</div>
 	</div>
@@ -135,22 +135,22 @@ if (isset($accounts['twitter']['username']) && $accounts['twitter']['username'] 
 	
 	<div id="about" class="content_bubble">
 		<h3>about</h3>
-		<p><?=$general['about_me']; ?></p>
+		<p><?php echo $general['about_me']; ?></p>
 	</div>
 	
 	<div id="photos" class="content_bubble">
-		<h3><? if (isset($general['first_name']) && $general['first_name'] != '') {echo strtolower($general['first_name'])."'s ";} ?>photos</h3>
-		<? if ($flickr_on == true) { ?>
+		<h3><?php if (isset($general['first_name']) && $general['first_name'] != '') {echo strtolower($general['first_name'])."'s ";} ?>photos</h3>
+		<?php if ($flickr_on == true) { ?>
 		<p>
 			<div id="galleria">Loading...</div> 
 			<script>
                 // Flickr init
-                var api_key = <?='\''.$accounts['flickr']['apikey'].'\'' ?>;
+                var api_key = <?php echo '\''.$accounts['flickr']['apikey'].'\'' ?>;
                 var flickr = new Galleria.Flickr(api_key);
                 // Get my photostream
                 flickr.setOptions({
                     size: 'large', max: 25, sort: 'date-posted-desc'
-                }).getUser('<?=$accounts['flickr']['username'] ?>', function(data) {
+                }).getUser('<?php echo $accounts['flickr']['username'] ?>', function(data) {
                     $('#galleria').galleria({
                         data_source: data,
                         debug: true
@@ -160,34 +160,34 @@ if (isset($accounts['twitter']['username']) && $accounts['twitter']['username'] 
             </script>
 		</p>	
 		<p id="more">
-			<a href="http://flickr.com/photos/<?=$accounts['flickr']['username'] ?>">More...</a>
+			<a href="http://flickr.com/photos/<?php echo $accounts['flickr']['username'] ?>">More...</a>
 		</p>
-		<? } ?>
+		<?php } ?>
 	</div>
 	
 	<div id="videos" class="content_bubble">
-		<? if ($video_bubble == true) { ?>
-		<h3><? if (isset($general['first_name']) && $general['first_name'] != '') {echo strtolower($general['first_name'])."'s ";} ?>videos</h3>
-		<?
+		<?php if ($video_bubble == true) { ?>
+		<h3><?php if (isset($general['first_name']) && $general['first_name'] != '') {echo strtolower($general['first_name'])."'s ";} ?>videos</h3>
+		<?php
 		if (isset($general['about_videos']) && $general['about_videos'] != '')
 		{
 			echo '<p>'.$general['about_videos'].'</p>';
 		}
 		?>
 		<p>
-			<? if ($vimeo_on == true) { ?>
+			<?php if ($vimeo_on == true) { ?>
 			<!-- Vimeo -->
 			<div id="vimeo_videos">
 				<?php foreach ($vimeo_videos->video as $video): ?>
-	            <a href="<?=$video->url ?>&width=640" rel="prettyPhoto" title="<?=$video->title ?>"><img src="<?=$video->thumbnail_small ?>" width="120" height="90" /></a>
+	            <a href="<?php echo $video->url ?>&width=640" rel="prettyPhoto" title="<?php echo $video->title ?>"><img src="<?php echo $video->thumbnail_small ?>" width="120" height="90" /></a>
 				<?php endforeach; ?>
 			</div>
-			<? } ?>
+			<?php } ?>
 			
-			<? if ($youtube_on == true) { ?>
+			<?php if ($youtube_on == true) { ?>
 			<!-- YouTube -->
 			<div id="youtube_videos">
-				<?
+				<?php
 				// iterate over entries in feed
 				foreach ($youtube_simple_xml->entry as $entry)
 				{
@@ -207,27 +207,27 @@ if (isset($accounts['twitter']['username']) && $accounts['twitter']['username'] 
 				}
 				?>
 			</div>
-			<? } ?>
+			<?php } ?>
 		</p>
-		<? } ?>
+		<?php } ?>
 	</div>
 	
 	<div id="twitter" class="content_bubble">
-		<h3><? if (isset($general['first_name']) && $general['first_name'] != '') {echo strtolower($general['first_name'])."'s ";} ?>tweets</h3>
+		<h3><?php if (isset($general['first_name']) && $general['first_name'] != '') {echo strtolower($general['first_name'])."'s ";} ?>tweets</h3>
 
 		<p>
 			<div id ="twitter_feed">
-				<? if ($twitter_on == true) { ?>
-				<?
+				<?php if ($twitter_on == true) { ?>
+				<?php
 				foreach ($twitter_simple_xml->status as $tweet)
 				{
-					echo '<p class="tweet"><img src="'.$tweet->user->profile_image_url.'" style="float: left; margin: 0 8px 8px 0;" />'.$tweet->text.'<br /><span style="font-size: 10px; font-style: italic;">'.$tweet->created_at.'</span></p><hr />';
+					if ($accounts['twitter']['@'] == 'true' || substr($tweet->text,0,1) != "@") echo '<p class="tweet"><img src="'.$tweet->user->profile_image_url.'" style="float: left; margin: 0 8px 8px 0;" />'.$tweet->text.'<br /><span style="font-size: 10px; font-style: italic;">'.$tweet->created_at.'</span></p><hr />';
 				}
 				?>
 				<p id="more">
-					<a href="http://twitter.com/<?=$accounts['twitter']['username'] ?>">More...</a>
+					<a href="http://twitter.com/<?php echo $accounts['twitter']['username'] ?>">More...</a>
 				</p>
-				<? } ?>
+				<?php } ?>
 			</div>
 		</p>
 	</div>
