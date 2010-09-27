@@ -65,7 +65,7 @@ if (isset($accounts['twitter']['username']) && $accounts['twitter']['username'] 
     <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" /> 
 	<link rel="SHORTCUT ICON" href="/favicon.ico" />
 	<script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
-	<?php if (isset($accounts['flickr']['username']) && isset($accounts['flickr']['apikey']) && $accounts['flickr']['apikey'] != '' && $accounts['flickr']['username'] != '')
+	<?php if ($flickr_on === true)
 	{
 	?>
 	
